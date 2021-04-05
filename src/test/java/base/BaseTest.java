@@ -23,6 +23,7 @@ public class BaseTest {
         driver.get("http://localhost:7080");
 
         homePage = new HomePage(driver);
+
 //        driver.manage().window().maximize();
 //        driver.manage().window().fullscreen();
 //        driver.manage().window().setSize(new Dimension(375,667));
