@@ -3,15 +3,24 @@ package slider;
 import base.BaseTest;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.HorizontalSliderPage;
 
 
 public class SliderTest extends BaseTest {
 
+    private HorizontalSliderPage horizontalSliderPage;
+
+    @BeforeMethod
+    public void initTest(){
+        horizontalSliderPage = homePage.clickHorizontalSliderLink();
+    }
+
     @Test
     public void testMoveSliderWithKey(){
-        HorizontalSliderPage horizontalSliderPage = homePage.clickHorizontalSliderLink();
+        //HorizontalSliderPage horizontalSliderPage = homePage.clickHorizontalSliderLink();
         for(int x=0; x<8; x++){
             horizontalSliderPage.moveSliderWithKeys(Keys.ARROW_RIGHT+"");
         }
@@ -20,7 +29,7 @@ public class SliderTest extends BaseTest {
 
     @Test
     public void testMoveSliderWithMouse(){
-        HorizontalSliderPage horizontalSliderPage = homePage.clickHorizontalSliderLink();
+        //HorizontalSliderPage horizontalSliderPage = homePage.clickHorizontalSliderLink();
         horizontalSliderPage.moveSliderWithMouse();
         Assert.assertEquals(horizontalSliderPage.getResult(), "4", "Result is incorrect!");
     }
