@@ -32,6 +32,11 @@ public class HomePage {
         return new CheckBoxPage(driver);
     }
 
+    public DropdownPage clickDropdownLink(){
+        clickLink("Dropdown");
+        return new DropdownPage(driver);
+    }
+
     private void clickLink(String linkText){
         driver.findElement(By.linkText(linkText)).click();
     }
