@@ -12,7 +12,7 @@ public class DropdownTest extends BaseTest {
     @Test
     public void testSelectOption(){
         DropdownPage dropdownPage = homePage.clickDropdownLink();
-        String option1 = "Option 1";
+        String option1 = "Option 2";
         dropdownPage.selectFromDropdown(option1);
         List<String> selectedOptions = dropdownPage.getSelectedOption();
         Assert.assertEquals(

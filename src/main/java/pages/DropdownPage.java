@@ -24,16 +24,18 @@ public class DropdownPage {
     }
 
     public List<String> getSelectedOption(){
-        List<WebElement> selectedElements = findDropdownElement().getAllSelectedOptions();
-//        List<String> selectedOptions = new ArrayList<>();
-//        for(WebElement element: selectedElements){
-//            selectedOptions.add(element.getText());
-//        }
-//        return selectedOptions;
-        return selectedElements
-                .stream()
-                .map(WebElement::getText)
-                .collect(Collectors.toList());
+        List<WebElement> selectedElements =
+                findDropdownElement().getAllSelectedOptions();
+        List<String> selectedOptions = new ArrayList<>();
+
+        for(WebElement element: selectedElements){
+            selectedOptions.add(element.getText());
+        }
+        return selectedOptions;
+//        return selectedElements
+//                .stream()
+//                .map(WebElement::getText)
+//                .collect(Collectors.toList());
     }
 
     private Select findDropdownElement(){
