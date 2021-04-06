@@ -33,6 +33,7 @@ public class CheckBoxPage {
                 ++index;
                 break;
             }
+            ++index;
         }
         return index;
     }

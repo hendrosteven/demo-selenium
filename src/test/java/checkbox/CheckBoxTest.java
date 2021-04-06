@@ -10,8 +10,8 @@ public class CheckBoxTest extends BaseTest {
     @Test
     public void testCheckBox(){
         CheckBoxPage checkBoxPage = homePage.clickCheckBoxLink();
-        checkBoxPage.selectOneCheckBox(0);
+        checkBoxPage.selectOneCheckBox(1);
         int resultIndex = checkBoxPage.getSelectedCheckBox();
-        Assert.assertEquals(resultIndex,0,"Invalid selected index");
+        Assert.assertEquals(resultIndex,1,"Invalid selected index");
     }
 }
