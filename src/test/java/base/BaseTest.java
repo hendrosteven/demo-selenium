@@ -21,29 +21,8 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver","driver/chromedriver");
         driver = new ChromeDriver();
         driver.get("http://localhost:7080");
-
         homePage = new HomePage(driver);
 
-//        driver.manage().window().maximize();
-//        driver.manage().window().fullscreen();
-//        driver.manage().window().setSize(new Dimension(375,667));
-
-//        WebElement inputLink = driver.findElement(By.linkText("Inputs"));
-//        inputLink.click();
-//        //pindah ke halaman input
-//        driver.findElement(By.tagName("input")).sendKeys("123456");
-
-//        List<WebElement> links = driver.findElements(By.tagName("a"));
-//        for(WebElement element: links){
-//            System.out.println(element.getText());
-//        }
-
-//        driver.findElement(By.linkText("Shifting Content")).click();
-//        driver.findElement(By.linkText("Example 1: Menu Element")).click();
-//        List<WebElement> tabs = driver.findElements(By.tagName("li"));
-//        System.out.println("Tabs: "+ tabs.size());
-
-        //driver.quit();
     }
 
     @AfterClass
@@ -52,8 +31,4 @@ public class BaseTest {
         driver.quit();
     }
 
-//    public static void main(String[] args){
-//        BaseTest test = new BaseTest();
-//        test.setup();
-//    }
 }

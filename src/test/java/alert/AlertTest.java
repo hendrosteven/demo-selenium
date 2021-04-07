@@ -3,6 +3,7 @@ package alert;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AlertPage;
@@ -16,7 +17,12 @@ public class AlertTest extends BaseTest {
         alertPage = homePage.clickAlertLink();
     }
 
-    @Test
+    @AfterMethod
+    public void reset(){
+        alertPage.historyBack();
+    }
+
+    @Test(priority = 0)
     public void testOkAlert(){
         alertPage.triggerAlertButtonOne();
         alertPage.clickOkOnAlert();
@@ -26,7 +32,7 @@ public class AlertTest extends BaseTest {
                 "Result Text is incorrect!");
     }
 
-    @Test
+    @Test(priority = 1)
     public void testGetTextFromAlert(){
         alertPage.triggerAlertButtonTwo();
         String text = alertPage.getConfirmText();
@@ -36,7 +42,7 @@ public class AlertTest extends BaseTest {
                 "Result text is incorrect");
     }
 
-    @Test
+    @Test(priority = 2)
     public void testSetTextPromptAlert(){
         alertPage.triggerAlertButtonThree();
         String text = "Hello Selenium";

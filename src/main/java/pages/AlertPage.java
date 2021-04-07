@@ -12,6 +12,9 @@ public class AlertPage {
     private final By alertButtonThree = By.xpath(".//button[text()='Click for JS Prompt']");
     private final By resultText = By.id("result");
 
+    public void historyBack(){
+        driver.navigate().back();
+    }
 
     public AlertPage(WebDriver driver) {
         this.driver = driver;
