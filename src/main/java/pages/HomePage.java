@@ -62,6 +62,11 @@ public class HomePage {
         return new ModalPage(driver);
     }
 
+    public WysiwygEditorPage clickWysiwygLInk(){
+        clickLink("WYSIWYG Editor");
+        return new WysiwygEditorPage(driver);
+    }
+
     private void clickLink(String linkText){
         driver.findElement(By.linkText(linkText)).click();
     }
