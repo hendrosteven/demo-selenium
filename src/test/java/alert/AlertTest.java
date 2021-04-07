@@ -22,7 +22,27 @@ public class AlertTest extends BaseTest {
         alertPage.clickOkOnAlert();
         String resultText = alertPage.getResultText();
         Assert.assertEquals(resultText,
-                "You successfully clicked an alert",
+                "You successfuly clicked an alert",
                 "Result Text is incorrect!");
+    }
+
+    @Test
+    public void testGetTextFromAlert(){
+        alertPage.triggerAlertButtonTwo();
+        String text = alertPage.getConfirmText();
+        alertPage.clickDismissOnAlert();
+        Assert.assertEquals(text,
+                "I am a JS Confirm",
+                "Result text is incorrect");
+    }
+
+    @Test
+    public void testSetTextPromptAlert(){
+        alertPage.triggerAlertButtonThree();
+        String text = "Hello Selenium";
+        alertPage.setPromptText(text);
+        alertPage.clickOkOnAlert();
+        String result = alertPage.getResultText();
+        Assert.assertTrue(result.contains(text),"Result text is incorrect!");
     }
 }
