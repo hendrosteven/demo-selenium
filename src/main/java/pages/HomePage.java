@@ -77,6 +77,11 @@ public class HomePage {
         return new ContextMenuPage(driver);
     }
 
+    public UploadPage clickUploadLink(){
+        clickLink("File Upload");
+        return new UploadPage(driver);
+    }
+
     private void clickLink(String linkText){
         driver.findElement(By.linkText(linkText)).click();
     }
