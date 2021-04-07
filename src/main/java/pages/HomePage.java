@@ -57,6 +57,11 @@ public class HomePage {
         return new AlertPage(driver);
     }
 
+    public ModalPage clickModalLink(){
+        clickLink("Entry Ad");
+        return new ModalPage(driver);
+    }
+
     private void clickLink(String linkText){
         driver.findElement(By.linkText(linkText)).click();
     }
