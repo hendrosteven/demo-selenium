@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeClass;
 import pages.HomePage;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
@@ -20,6 +21,7 @@ public class BaseTest {
     public void setUp(){
         System.setProperty("webdriver.chrome.driver","driver/chromedriver");
         driver = new ChromeDriver();
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://localhost:7080");
         homePage = new HomePage(driver);
 
