@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import pages.HomePage;
+import utility.WindowManager;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -29,8 +30,11 @@ public class BaseTest {
 
     @AfterClass
     public void tearDown(){
-
         driver.quit();
+    }
+
+    public WindowManager getWindowManager(){
+        return new WindowManager(driver);
     }
 
 }

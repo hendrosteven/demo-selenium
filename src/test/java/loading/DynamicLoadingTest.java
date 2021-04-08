@@ -16,4 +16,13 @@ public class DynamicLoadingTest extends BaseTest {
                 "Hello World!",
                 "Loaded text is incorrect!");
     }
+
+    @Test
+    public void testNavigator(){
+        DynamicLoadingExamplePage1 loadPage = homePage.clickDynamicLoadingLink().clickExample1();
+        getWindowManager().goBack();
+        getWindowManager().refreshPage();
+        getWindowManager().goForward();
+        getWindowManager().gotTo("https://google.com");
+    }
 }
