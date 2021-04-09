@@ -17,11 +17,6 @@ public class AlertTest extends BaseTest {
         alertPage = homePage.clickAlertLink();
     }
 
-    @AfterMethod
-    public void reset(){
-        alertPage.historyBack();
-    }
-
     @Test(priority = 0)
     public void testOkAlert(){
         alertPage.triggerAlertButtonOne();

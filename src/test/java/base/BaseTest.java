@@ -7,10 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.HomePage;
 import utility.EventReporter;
 import utility.WindowManager;
@@ -34,9 +31,12 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver","driver/chromedriver");
         driver = new EventFiringWebDriver(new ChromeDriver(getChromeOptions()));
         driver.register(new EventReporter());
+    }
+
+    @BeforeMethod
+    public void goHome(){
         driver.get("http://the-internet.herokuapp.com");
         homePage = new HomePage(driver);
-
     }
 
     @AfterClass
@@ -68,7 +68,7 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
         options.setExperimentalOption("useAutomationExtension", false);
-        //options.setHeadless(true);
+        options.setHeadless(true);
         return options;
     }
 
