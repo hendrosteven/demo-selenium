@@ -3,11 +3,13 @@ package base;
 import com.google.common.io.Files;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import pages.HomePage;
+import utility.EventReporter;
 import utility.WindowManager;
 
 import java.io.File;
@@ -19,15 +21,15 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    private WebDriver driver;
+    private EventFiringWebDriver driver;
     protected HomePage homePage;
 
     @BeforeClass
     public void setUp(){
         System.setProperty("webdriver.chrome.driver","driver/chromedriver");
-        driver = new ChromeDriver();
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("http://localhost:7080");
+        driver = new EventFiringWebDriver(new ChromeDriver());
+        driver.register(new EventReporter());
+        driver.get("http://the-internet.herokuapp.com");
         homePage = new HomePage(driver);
 
     }
