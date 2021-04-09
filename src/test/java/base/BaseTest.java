@@ -5,10 +5,12 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import pages.HomePage;
 import utility.EventReporter;
 import utility.WindowManager;
@@ -19,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
@@ -67,6 +70,31 @@ public class BaseTest {
         options.setExperimentalOption("useAutomationExtension", false);
         //options.setHeadless(true);
         return options;
+    }
+
+    @Test
+    private void testSetCookie(){
+        homePage.setCookie();
+    }
+
+    @Test
+    private void testGetAllCookie(){
+        homePage.setCookie();
+        homePage.getAllCookie();
+    }
+
+    @Test
+    private void testGetCookie(){
+        homePage.setCookie();
+        Cookie cookie = homePage.getCookie("data");
+        Assert.assertEquals(cookie.getValue(),
+                "Training Selenium",
+                "Value is incorrect!");
+    }
+
+    @Test
+    private void testRemoveCookie(){
+        homePage.removeAllCookie();
     }
 
 }

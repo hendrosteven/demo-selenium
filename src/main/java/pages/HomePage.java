@@ -1,7 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Set;
 
 public class HomePage {
 
@@ -104,5 +107,25 @@ public class HomePage {
 
     private void clickLink(String linkText){
         driver.findElement(By.linkText(linkText)).click();
+    }
+
+    public void setCookie(){
+        Cookie cookie = new Cookie.Builder("data", "Training Selenium")
+                .domain("the-internet.herokuapp.com")
+                .build();
+        driver.manage().addCookie(cookie);
+    }
+
+    public void getAllCookie(){
+        Set<Cookie> cookies = driver.manage().getCookies();
+        cookies.forEach(cookie -> System.out.println(cookie.getName()));
+    }
+
+    public void removeAllCookie(){
+        driver.manage().deleteAllCookies();
+    }
+
+    public Cookie getCookie(String name){
+       return driver.manage().getCookieNamed(name);
     }
 }
