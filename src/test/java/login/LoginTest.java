@@ -12,7 +12,7 @@ public class LoginTest extends BaseTest {
     public void testSuccessfulLogin(){
        LoginPage loginPage = homePage.clickFormAuthenticationLink();
        loginPage.setUserNameField("tomsmith");
-       loginPage.setPasswordField("SuperSecretPassword!");
+       loginPage.setPasswordField("SuperSecretPassword!XX");
        SecureAreaPage secureAreaPage = loginPage.clickLoginButton();
        String alertText = secureAreaPage.getAlertText();
 //       Assert.assertEquals(

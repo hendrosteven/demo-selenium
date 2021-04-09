@@ -3,6 +3,7 @@ package base;
 import com.google.common.io.Files;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -15,6 +16,7 @@ import utility.WindowManager;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -27,7 +29,7 @@ public class BaseTest {
     @BeforeClass
     public void setUp(){
         System.setProperty("webdriver.chrome.driver","driver/chromedriver");
-        driver = new EventFiringWebDriver(new ChromeDriver());
+        driver = new EventFiringWebDriver(new ChromeDriver(getChromeOptions()));
         driver.register(new EventReporter());
         driver.get("http://the-internet.herokuapp.com");
         homePage = new HomePage(driver);
@@ -57,6 +59,14 @@ public class BaseTest {
     private String currentDateTime(){
         SimpleDateFormat sdm = new SimpleDateFormat("yyyy-dd-MM HH:mm:ss");
         return sdm.format(new Date());
+    }
+
+    private ChromeOptions getChromeOptions(){
+        ChromeOptions options = new ChromeOptions();
+        options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+        options.setExperimentalOption("useAutomationExtension", false);
+        //options.setHeadless(true);
+        return options;
     }
 
 }
